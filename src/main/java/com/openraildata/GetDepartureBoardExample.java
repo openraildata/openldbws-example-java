@@ -6,6 +6,10 @@ import com.thalesgroup.rtti._2017_10_01.ldb.LDBServiceSoap;
 import com.thalesgroup.rtti._2017_10_01.ldb.Ldb;
 import com.thalesgroup.rtti._2017_10_01.ldb.StationBoardResponseType;
 import com.thalesgroup.rtti._2017_10_01.ldb.types.ServiceItem;
+import org.apache.cxf.endpoint.Client;
+import org.apache.cxf.frontend.ClientProxy;
+import org.apache.cxf.interceptor.LoggingInInterceptor;
+import org.apache.cxf.interceptor.LoggingOutInterceptor;
 
 import java.util.List;
 
@@ -29,6 +33,7 @@ import java.util.List;
 public class GetDepartureBoardExample {
 
     private static final String LDB_TOKEN = "";
+    private static final boolean DEBUG = false;
 
     public static void main(String[] args) {
 
@@ -41,6 +46,15 @@ public class GetDepartureBoardExample {
 
         Ldb soap = new Ldb();
         LDBServiceSoap soapService = soap.getLDBServiceSoap12();
+
+        /*
+         * To examine the request and responses sent to the service, set DEBUG to true above
+         */
+        if (DEBUG) {
+            Client client = ClientProxy.getClient(soapService);
+            client.getInInterceptors().add(new LoggingInInterceptor());
+            client.getOutInterceptors().add(new LoggingOutInterceptor());
+        }
 
         GetBoardRequestParams params = new GetBoardRequestParams();
         params.setCrs("EUS");
