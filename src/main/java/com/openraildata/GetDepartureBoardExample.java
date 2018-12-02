@@ -7,10 +7,13 @@ import com.thalesgroup.rtti._2017_10_01.ldb.Ldb;
 import com.thalesgroup.rtti._2017_10_01.ldb.StationBoardResponseType;
 import com.thalesgroup.rtti._2017_10_01.ldb.types.ServiceItem;
 import org.apache.cxf.endpoint.Client;
+import org.apache.cxf.ext.logging.LoggingInInterceptor;
+import org.apache.cxf.ext.logging.LoggingOutInterceptor;
 import org.apache.cxf.frontend.ClientProxy;
-import org.apache.cxf.interceptor.LoggingInInterceptor;
-import org.apache.cxf.interceptor.LoggingOutInterceptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import javax.naming.ConfigurationException;
 import java.util.List;
 
 /**
@@ -32,13 +35,15 @@ import java.util.List;
  */
 public class GetDepartureBoardExample {
 
+    private static final Logger logger = LoggerFactory.getLogger(GetDepartureBoardExample.class);
+
     private static final String LDB_TOKEN = "";
     private static final boolean DEBUG = false;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ConfigurationException {
 
         if (LDB_TOKEN.isEmpty()) {
-            throw new RuntimeException("Please configure your OpenLDBWS token in GetDepartureBoardExample!");
+            throw new ConfigurationException("Please configure your OpenLDBWS token in GetDepartureBoardExample!");
         }
 
         AccessToken accessToken = new AccessToken();
@@ -61,14 +66,14 @@ public class GetDepartureBoardExample {
 
         StationBoardResponseType departureBoard = soapService.getDepartureBoard(params, accessToken);
 
-        System.out.println("Trains at " + departureBoard.getGetStationBoardResult().getLocationName());
-        System.out.println("===============================================================================");
+        logger.info("Trains at {}", departureBoard.getGetStationBoardResult().getLocationName());
+        logger.info("===============================================================================");
 
         List<ServiceItem> service = departureBoard.getGetStationBoardResult().getTrainServices().getService();
 
         for (ServiceItem si : service) {
 
-            System.out.println(si.getStd() + " to " + si.getDestination().getLocation().get(0).getLocationName() + " - " + si.getEtd());
+            logger.info("{} to {} - {}", si.getStd(), si.getDestination().getLocation().get(0).getLocationName(), si.getEtd());
 
         }
 
