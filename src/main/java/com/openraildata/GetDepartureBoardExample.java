@@ -2,11 +2,9 @@ package com.openraildata;
 
 import com.thalesgroup.rtti._2013_11_28.token.types.AccessToken;
 import com.thalesgroup.rtti._2017_10_01.ldb.GetBoardRequestParams;
-import com.thalesgroup.rtti._2017_10_01.ldb.LDBServiceSoap;
 import com.thalesgroup.rtti._2017_10_01.ldb.Ldb;
 import com.thalesgroup.rtti._2017_10_01.ldb.StationBoardResponseType;
 import com.thalesgroup.rtti._2017_10_01.ldb.types.ServiceItem;
-import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.ext.logging.LoggingInInterceptor;
 import org.apache.cxf.ext.logging.LoggingOutInterceptor;
 import org.apache.cxf.frontend.ClientProxy;
@@ -46,22 +44,22 @@ public class GetDepartureBoardExample {
             throw new ConfigurationException("Please configure your OpenLDBWS token in GetDepartureBoardExample!");
         }
 
-        AccessToken accessToken = new AccessToken();
+        var accessToken = new AccessToken();
         accessToken.setTokenValue(LDB_TOKEN);
 
-        Ldb soap = new Ldb();
-        LDBServiceSoap soapService = soap.getLDBServiceSoap12();
+        var soap = new Ldb();
+        var soapService = soap.getLDBServiceSoap12();
 
         /*
          * To examine the request and responses sent to the service, set DEBUG to true above
          */
         if (DEBUG) {
-            Client client = ClientProxy.getClient(soapService);
+            var client = ClientProxy.getClient(soapService);
             client.getInInterceptors().add(new LoggingInInterceptor());
             client.getOutInterceptors().add(new LoggingOutInterceptor());
         }
 
-        GetBoardRequestParams params = new GetBoardRequestParams();
+        var params = new GetBoardRequestParams();
         params.setCrs("EUS");
 
         StationBoardResponseType departureBoard = soapService.getDepartureBoard(params, accessToken);
