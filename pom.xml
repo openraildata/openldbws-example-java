@@ -55,7 +55,7 @@
                             <sourceRoot>${project.build.sourceDirectory}</sourceRoot>
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2017-10-01</wsdl>
+                                    <wsdl>https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2021-11-01</wsdl>
                                     <extendedSoapHeaders>true</extendedSoapHeaders>
                                 </wsdlOption>
                             </wsdlOptions>

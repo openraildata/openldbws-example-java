@@ -30,7 +30,7 @@ Periodically, a new version of the WSDL will be released at:
 
 * https://lite.realtime.nationalrail.co.uk/OpenLDBWS/
 
-This code is written for version 2017-10-01.  To update it to use a
+This code is written for version 2021-11-01.  To update it to use a
 later version, edit ```pom.xml``` and change the URL for the WSDL
 inside the ```plugins``` tag.  
 
