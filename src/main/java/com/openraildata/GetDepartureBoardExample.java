@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Open Live Departure Boards Web Service (OpenLDBWS) API Demonstrator
- * Copyright (C)2018-2022 OpenTrainTimes Ltd.
+ * Copyright (C)2018-2024 OpenTrainTimes Ltd.
  * <p>
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
