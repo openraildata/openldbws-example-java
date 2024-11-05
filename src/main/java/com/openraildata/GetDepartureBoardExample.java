@@ -1,10 +1,10 @@
 package com.openraildata;
 
 import com.thalesgroup.rtti._2013_11_28.token.types.AccessToken;
-import com.thalesgroup.rtti._2017_10_01.ldb.GetBoardRequestParams;
-import com.thalesgroup.rtti._2017_10_01.ldb.Ldb;
-import com.thalesgroup.rtti._2017_10_01.ldb.StationBoardResponseType;
-import com.thalesgroup.rtti._2017_10_01.ldb.types.ServiceItem;
+import com.thalesgroup.rtti._2021_11_01.ldb.GetBoardRequestParams;
+import com.thalesgroup.rtti._2021_11_01.ldb.Ldb;
+import com.thalesgroup.rtti._2021_11_01.ldb.StationBoardResponseType;
+import com.thalesgroup.rtti._2021_11_01.ldb.types.ServiceItem;
 import org.apache.cxf.ext.logging.LoggingInInterceptor;
 import org.apache.cxf.ext.logging.LoggingOutInterceptor;
 import org.apache.cxf.frontend.ClientProxy;
